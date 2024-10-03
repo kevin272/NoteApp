@@ -44,7 +44,24 @@ const [updatedProduct, setUpdatedProduct]= useState(product);
   };
 
    const handleUpdateProduct = async (pid, updatedProduct) => {
-    await updateProduct(pid, updatedProduct);
+    const { success, message } =await updateProduct(pid, updatedProduct);
+    if (!success) {
+      toast({
+        title: 'Error',
+        description: message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: 'Success',
+        description: message,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
     onClose();
    }
 
