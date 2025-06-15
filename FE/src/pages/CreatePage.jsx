@@ -5,68 +5,79 @@ import {
   Box,
   Heading,
   Input,
+  Textarea,
   Button,
   useColorModeValue,
   useToast,
+  Text
 } from '@chakra-ui/react';
-import { useProductStore } from '../store/product';
+import { useNoteStore } from '../store/note';
+
 const CreatePage = () => {
-  const [newProduct, setnewProduct] = useState({
-    name: "",
-    price: "",
-    image: ""
+  const [newNote, setNewNote] = useState({
+    title: "",
+    content: ""
   });
 
   const toast = useToast();
-  const {createProduct} = useProductStore();
-  const handleAddProduct = async() => {
-    const {success,message} = await createProduct(newProduct);
-    if (!success){
+  const { createNote } = useNoteStore();
+
+  const handleAddNote = async () => {
+    const { success, message } = await createNote(newNote);
+    if (!success) {
       toast({
         title: "Error",
         description: message,
         status: "error",
         isClosable: true
-      })} else {
-        toast({
-          title: "Success",
+      });
+    } else {
+      toast({
+        title: "Success",
         description: message,
         status: "success",
         isClosable: true
-        })
-      }
-      setnewProduct({name:"", price: "",image: ""})
+      });
+      setNewNote({ title: "", content: "" });
+    }
   }
 
   return (
     <Container maxW={"container.sm"}>
       <VStack spacing={8}>
-        <Heading as ={"h1"} size= {"2x1"} textAlign={"center"}>
-          Create New Product
-        </Heading>
-        <Box w={"full"} bg={useColorModeValue("white","gray.800")}
-        p={6} rounded={"lg"} shadow={"md"}>
+        <Text fontSize={"30"}
+          fontWeight={"bold"} 
+          textAlign={"center"} 
+          textColor={useColorModeValue("white", "black")}>
+          Create New Note
+        </Text>
+        <Box
+          w={"full"}
+          bg={useColorModeValue("white", "black")}
+          p={6}
+          rounded={"lg"}
+          shadow={"md"}
+        >
           <VStack spacing={4}>
-            <Input 
-            placeholder = 'Product Name'
-            name='name'
-            value={newProduct.name}
-            onChange = {(e)=> setnewProduct({...newProduct,name:e.target.value})}
+            <Input
+              placeholder='Title'
+              name='title'
+              value={newNote.title}
+              onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
             />
-            <Input 
-            placeholder = 'Price'
-            name='price'
-            type='number'
-            value={newProduct.price}
-            onChange = {(e)=> setnewProduct({...newProduct,price:e.target.value})}
+            <Textarea
+              placeholder='Content'
+              name='content'
+              value={newNote.content}
+              onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
             />
-            <Input 
-            placeholder = 'Image URL'
-            name='image'
-            value={newProduct.image}
-            onChange = {(e)=> setnewProduct({...newProduct,image:e.target.value})}
-            />
-            <Button colorScheme='blue' onClick={handleAddProduct} w='full'>Add Product</Button>
+            <Button
+              colorScheme={useColorModeValue("yellow", "orange")}
+              onClick={handleAddNote}
+              w='full'
+            >
+              Add Note
+            </Button>
           </VStack>
         </Box>
       </VStack>

@@ -8,7 +8,7 @@ import { useColorModeValue } from "@chakra-ui/react"
 function App() {
 
   return (
-    <Box minH={"100vh"} bg={useColorModeValue("gray.200","gray.900")}>
+    <Box minH={"100vh"} bg={useColorModeValue("black","white")}>
       {<Navbar/>}
       <Routes>
         <Route path="/" element = {<HomePage />}/>
