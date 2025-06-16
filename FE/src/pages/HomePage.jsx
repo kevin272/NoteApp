@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Text, VStack, SimpleGrid, useColorModeValue } from '@chakra-ui/react';
+import { Container, Text, VStack, SimpleGrid, useColorModeValue, Flex } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useNoteStore } from '../store/note.js';
 import NoteCard from "../components/NoteCard.jsx";
@@ -14,16 +14,22 @@ const HomePage = () => {
   return (
     <Container maxW='container.xl' py={12}>
       <VStack spacing={8}>
-        <Text
-          fontSize={"30"}
-          fontWeight={"bold"}
-          bg={useColorModeValue("white", "black")}
-          bgClip={"text"}
-          textAlign={"center"}
-        >
-          Current Notes 📝
-        </Text>
-
+       <Flex align="center" justify="center" gap={4}>
+  <Text
+    fontSize="30"
+    fontWeight="bold"
+    bg={useColorModeValue("white", "black")}
+    bgClip="text"
+    textAlign="center"
+  >
+    Current Notes
+  </Text>
+  <img
+    src="/Note.svg"
+    alt="Noteify Logo"
+    style={{ width: "80px", height: "auto", marginBottom: "20px" }}
+  />
+</Flex>
         <SimpleGrid
           columns={{
             base: 1,

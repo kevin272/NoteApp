@@ -25,7 +25,7 @@ const Navbar = () => {
           bg={useColorModeValue("black", "white")}
           bgClip={"text"}
         >
-          <Link to={"/"}>Notes App 📝 </Link>
+          <Link to={"/"}>Noteify 📝 </Link>
         </Text>
         
         <HStack spacing={2} alignItems={"center"}>
