@@ -3,6 +3,8 @@ import { Container, Text, VStack, SimpleGrid, useColorModeValue, Flex } from '@c
 import { Link } from 'react-router-dom';
 import { useNoteStore } from '../store/note.js';
 import NoteCard from "../components/NoteCard.jsx";
+import ParticlesBackground from "../components/particlesbackground";
+
 
 const HomePage = () => {
   const { fetchNotes, notes } = useNoteStore();
@@ -12,9 +14,12 @@ const HomePage = () => {
   }, [fetchNotes]);
 
   return (
-    <Container maxW='container.xl' py={12}>
+    // <>
+    // <ParticlesBackground />
+    <Container maxW='container.xl' py={12} position="relative" zIndex={1}>
       <VStack spacing={8}>
-       <Flex align="center" justify="center" gap={4}>
+
+   <Flex align="center" justify="center" gap={4}>
   <Text
     fontSize="30"
     fontWeight="bold"
@@ -37,7 +42,7 @@ const HomePage = () => {
             lg: 3
           }}
           spacing={10}
-          w={"full"}
+          w="full"
         >
           {notes.map((note) => (
             <NoteCard key={note._id} note={note} />
@@ -45,7 +50,7 @@ const HomePage = () => {
         </SimpleGrid>
 
         {notes.length === 0 && (
-          <Text fontSize='xl' textAlign={"center"} fontWeight='bold' color='gray.500'>
+          <Text fontSize='xl' textAlign="center" fontWeight='bold' color='gray.500'>
             No notes found 😢{" "}
             <Link to={"/create"}>
               <Text as='span' color='blue.500' _hover={{ textDecoration: "underline" }}>
@@ -56,6 +61,7 @@ const HomePage = () => {
         )}
       </VStack>
     </Container>
+    // </>
   );
 };
 

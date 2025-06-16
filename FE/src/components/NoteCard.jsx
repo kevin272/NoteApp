@@ -93,7 +93,7 @@ const NoteCard = ({ note }) => {
       {/* Modal for Edit */}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent >
           <ModalHeader>Edit Note</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -118,7 +118,7 @@ const NoteCard = ({ note }) => {
           </ModalBody>
           <ModalFooter>
             <Button
-              colorScheme="blue"
+              colorScheme="gray"
               onClick={() => handleUpdateNote(note._id, updatedNote)}
             >
               Update

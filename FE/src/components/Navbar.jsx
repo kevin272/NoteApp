@@ -7,7 +7,7 @@ const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Container maxW={"1920px"} px={4} bg={useColorModeValue("white", "black")}>
+    <Container maxW={"1920px"} px={4} bg={useColorModeValue("white", "black")} backdropFilter="blur(10px)">
       <Flex
         h={16}
         alignItems={"center"}
@@ -28,15 +28,16 @@ const Navbar = () => {
           <Link to={"/"}>Noteify 📝 </Link>
         </Text>
         
-        <HStack spacing={2} alignItems={"center"}>
+        <HStack spacing={4} alignItems={"center"}>
           <Link to={"/create"}>
             <Button>
-              <PlusSquareIcon fontSize={20} />
+              <PlusSquareIcon fontSize={20} mr={2} />
+              NEW
             </Button>
           </Link>
 
           <Button onClick={toggleColorMode}>
-            {colorMode === "light" ? <MoonIcon /> : <SunIcon size="20" />}
+            {colorMode === "light" ? <MoonIcon /> : <SunIcon boxSize={5} />}
           </Button>
         </HStack>
       </Flex>
