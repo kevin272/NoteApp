@@ -18,22 +18,23 @@ const HomePage = () => {
     // <ParticlesBackground />
     <Container maxW='container.xl' py={12} position="relative" zIndex={1}>
       <VStack spacing={8}>
-        <Flex align="center" justify="center" gap={6} w="full">
-          <Text
-            fontSize="30"
-            fontWeight="bold"
-            bg={useColorModeValue("white", "black")}
-            bgClip="text"
-            textAlign="left"
-          >
-            Current Notes
-          </Text>
-          <img
-            src='public/note.svg'
-            alt='Notes'
-            style={{ width: '60px', height: '60px', objectFit: 'contain' }}
-          />
-        </Flex>
+
+   <Flex align="center" justify="center" gap={4}>
+  <Text
+    fontSize="30"
+    fontWeight="bold"
+    bg={useColorModeValue("white", "black")}
+    bgClip="text"
+    textAlign="center"
+  >
+    Current Notes
+  </Text>
+  <img
+    src="/Note.svg"
+    alt="Noteify Logo"
+    style={{ width: "80px", height: "auto", marginBottom: "20px" }}
+  />
+</Flex>
         <SimpleGrid
           columns={{
             base: 1,
